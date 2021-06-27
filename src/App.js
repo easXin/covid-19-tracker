@@ -8,12 +8,22 @@ import './App.css';
 function App() {
   const [countries, setCountries] = useState([])
   const [country, setCountry] = useState('worldwide')
+  const [countryInfo, setCountryInfo] = useState({})
+  const diseaseShApi = "https://disease.sh/v3/covid-19/"
 
+  // *** 
+  useEffect(() => {
+    fetch(`${diseaseShApi}all`)
+      .then(res => res.json())
+      .then(data => {
+        setCountryInfo(data)
+      })
+  })
   // async : I want to send a request, wait for it , do something with it 
   // await :  do something with promise
   useEffect(() => {
     const getCountriesData = async () => {
-      await fetch("https://disease.sh/v3/covid-19/countries")
+      await fetch(`${diseaseShApi}countries`)
         // json() takes in a res, return a promise
         .then(response => response.json())
         .then(data => {
@@ -45,6 +55,18 @@ function App() {
     const countryCode = event.target.value
     //console.log("1000 >>>", countryCode)
     setCountry(countryCode)
+
+    // pull the information for this country, then render on the table 
+
+    const url = countryCode === "worldwide" ? `${diseaseShApi}all` :
+      `${diseaseShApi}${countryCode}`
+
+    await fetch(url).then(
+      res => res.json()
+    ).then(data => {
+      setCountryInfo(data)
+      console.table(data)
+    })
   }
   return (
     <div className="app">
@@ -69,11 +91,13 @@ function App() {
             </Select>
           </FormControl>
         </div>
+        {/*     todayRecovered recovered     todayDeaths    deaths
+         */}
         {/* InfoBoxes */}
         <div className="app__stats">
-          <InfoBox title="Coronavirus Cases" cases={123} total={2000} />
-          <InfoBox title="Recovered" cases={121} total={3000} />
-          <InfoBox title="Death" cases={332} total={4000} />
+          <InfoBox title="Coronavirus Cases" cases={countryInfo.todayCases} total={countryInfo.cases} />
+          <InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
+          <InfoBox title="Death" cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
         </div>
 
         {/* Map */}
