@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
+import InfoBox from "./components/InfoBox"
 import './App.css';
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
     <div className="app">
       <div className="app__header">
         {/* Header */}
-        <p>Covid-19 Tracker</p>
+        <p>COVID-19 Tracker & Interactive Charts</p>
         {/* Title Select input dropdown filed */}
         <FormControl className="app__dropdown">
           <Select
@@ -64,22 +65,15 @@ function App() {
               ))
             }
 
-            {/* 
-              <ManuItem value="worldwide">Option 1</ManuItem>
-              <ManuItem value="worldwide">Option 2</ManuItem>
-              <ManuItem value="worldwide">Option 3</ManuItem>
-              <ManuItem value="worldwide">Option 4</ManuItem>
-            */}
           </Select>
         </FormControl>
       </div>
-
-
-
       {/* InfoBoxes */}
-      {/* InfoBoxes */}
-      {/* InfoBoxes */}
-      {/* InfoBoxes */}
+      <div className="app__stats">
+        <InfoBox title="Coronavirus Cases" cases={123} total={2000} />
+        <InfoBox title="Recovered" cases={121} total={3000} />
+        <InfoBox title="Death" cases={332} total={4000} />
+      </div>
 
       {/* Table */}
       {/* Graph */}
