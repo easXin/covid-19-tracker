@@ -1,0 +1,33 @@
+.mainPanel {
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  width: 300px;
+}
+
+.mainPanel__top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mainPanel__logo {
+  width: 200px;
+  object-fit: contain;
+  margin-top: 18px;
+}
+
+.mainPanel__search {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 24px;
+}
+
+.mainPanel__mid {
+}
+
+.mainPanel__bottom {
+  display: grid;
+  grid-template-columns: 8ch auto;
+}
