@@ -1,21 +1,28 @@
 .table {
   margin-top: 20px;
   overflow: scroll;
-  height: 400px;
+  height: 750px;
   color: #6a5d5d;
+  margin: 0cm 0cm 0pt;
+  text-align: left;
 }
 .table::-webkit-scrollbar {
   display: none;
 }
 
-.table tr {
-  display: flex;
-  justify-content: space-between;
-}
-
-.table td {
+.table td,
+th {
   padding: 0.5rem;
+  vertical-align: middle !important;
+  text-align: center;
 }
 .table tr:nth-of-type(odd) {
   background-color: #f3f2f8;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+  background-color: white;
 }

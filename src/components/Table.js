@@ -5,13 +5,23 @@ function Table({ countries }) {
     return (
         <div className="table">
             <table>
+                <thead>
+                    <tr>
+                        <th>Flag</th>
+                        <th>Country</th>
+                        <th>Cases</th>
+                        <th>Recovered</th>
+                        <th>Death</th>
+                    </tr>
+                </thead>
                 <tbody>
                     {countries.map(({ country, cases }) => (
                         <tr key={uuid()}>
                             <td>{country}</td>
-                            <td>
-                                <strong>{cases}</strong>
-                            </td>
+                            <td>{country}</td>
+                            <td>{country}</td>
+                            <td>{country}</td>
+                            <td>{country}</td>
                         </tr>
                     ))}
                 </tbody>

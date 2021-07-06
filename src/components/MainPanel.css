@@ -1,33 +1,78 @@
 .mainPanel {
   display: flex;
   flex-direction: column;
-  height: 450px;
-  width: 300px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .mainPanel__top {
+
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
 .mainPanel__logo {
-  width: 200px;
+  height: 80px;
+  margin-left: -30px;
   object-fit: contain;
-  margin-top: 18px;
+  cursor: pointer;
+  margin-right: 340px;
 }
 
 .mainPanel__search {
+  height: 30px;
   display: flex;
-  flex: 1;
   align-items: center;
-  border-radius: 24px;
+  flex: 0.7;
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 5px;
+  border-radius: 50px;
+}
+
+.mainPanel__search > .MuiSvgIcon-root {
+  color: gray;
+}
+
+.mainPanel__search > input {
+  border: none;
+  width: auto;
+  padding: 10px;
+  outline-width: 0;
+  font-size: medium;
+  background-color: transparent;
 }
 
 .mainPanel__mid {
+  height: 300px;
+  width: 750px;
+  border-radius: 1px red solid;
 }
 
 .mainPanel__bottom {
-  display: grid;
-  grid-template-columns: 8ch auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.mainPanel__bottomTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 10px;
+}
+
+.mainPanel__bottomDown {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.mainPanel__bottomLeft {
+  margin-right: 10px;
+}
+.card {
+  width: 350px;
 }
