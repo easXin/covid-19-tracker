@@ -7,11 +7,11 @@ function Table({ countries }) {
             <table>
                 <thead>
                     <tr>
-                        <th>Flag</th>
                         <th>Country</th>
                         <th>Cases</th>
                         <th>Recovered</th>
                         <th>Death</th>
+                        <th>Fatality</th>
                     </tr>
                 </thead>
                 <tbody>

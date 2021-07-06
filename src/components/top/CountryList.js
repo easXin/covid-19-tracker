@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { sortData, prettyPrintStat } from "../utils/utils"
-import Table from "./Table"
+import { sortData, prettyPrintStat } from "../../utils/utils"
+import Table from "../Table"
 import './CountryList.css'
 
 function CountryList() {

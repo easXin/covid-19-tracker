@@ -1,0 +1,10 @@
+.news {
+  margin: 25px 25px auto 25px;
+  border: 1px solid red;
+  flex: 1;
+  display: flex;
+  height: 800px;
+  width: inherit;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

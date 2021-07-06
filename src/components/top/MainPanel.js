@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import Map from './Map'
-import { sortData, prettyPrintStat } from "../utils/utils"
+import Map from '../Map'
+import { sortData, prettyPrintStat } from "../../utils/utils"
 import numeral from "numeral";
-import InfoBox from "./InfoBox"
+import InfoBox from "../InfoBox"
 import { Card, CardContent, MenuItem, Select, FormControl } from '@material-ui/core'
-import Table from './Table'
-import LineGraph from './LineGraph';
+import LineGraph from '../LineGraph';
 import './MainPanel.css'
 
 

@@ -1,0 +1,10 @@
+.symptoms {
+  border: 1px solid red;
+  padding-top: 10px;
+  flex: 1;
+  display: flex;
+  height: 400px;
+  width: inherit;
+  align-items: center;
+  margin: 25px;
+}

@@ -13,8 +13,11 @@ import './App.css';
 import "leaflet/dist/leaflet.css"
 
 // ------------------------------------------  v2 
-import MainPanel from './components/MainPanel'
-import CountryList from './components/CountryList'
+import MainPanel from './components/top/MainPanel'
+import CountryList from './components/top/CountryList'
+import News from './components/mid/News'
+import Symptoms from './components/bottom/Symptoms'
+import Footer from './components/footer/Footer'
 
 
 const App = () => {
@@ -87,13 +90,16 @@ const App = () => {
         </div>
       </div>
 
-
       <div className="app__mid">
-
+        <News />
       </div>
 
       <div className="app__bottom">
+        <Symptoms />
+      </div>
 
+      <div className="app__footer">
+        <Footer />
       </div>
     </div>
   );
