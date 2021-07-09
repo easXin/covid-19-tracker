@@ -7,7 +7,12 @@ import numeral from "numeral";
 import InfoBox from "../InfoBox"
 import { Card, CardContent, MenuItem, Select, FormControl } from '@material-ui/core'
 import LineGraph from '../LineGraph';
+import PublicIcon from '@material-ui/icons/Public';
 import './MainPanel.css'
+import PieGraph from '../PieGraph.js';
+import PersonIcon from '@material-ui/icons/Person';
+import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+import MoodBadIcon from '@material-ui/icons/MoodBad';
 
 
 function MainPanel() {
@@ -70,37 +75,59 @@ function MainPanel() {
         <div className="mainPanel">
             <div className="mainPanel__top">
                 <img
-                    className="mainPanel__logo"
                     src={imgUrl}
                     alt="C19 logo"
                 />
                 <div className="mainPanel__search">
                     <SearchIcon />
-                    <input type="text" placeholder="Search Table ... " className="mainPanel__searchInput" />
+                    <input type="text" placeholder="Search Table ... "
+                        className="mainPanel__searchInput" />
                     <ArrowDropDownIcon className="mainPanel__inputArrow" />
                 </div>
             </div>
+
             <div className="mainPanel__mid">
                 <Map
+                    className="mainPanel__map"
                     countries={mapCountries}
                     casesType={casesType}
                     center={mapCenter}
                     zoom={mapZoom}
                 />
             </div>
+
             <div className="mainPanel__bottom">
                 <div className="mainPanel__bottomTop">
                     <Card className="mainPanel__bottomLeft card">
                         <CardContent>
-                            <div className="detail">
-                                <LineGraph casesType={casesType} />
+                            <div className="mainPanel__detail">
+                                <div className="mainPanel__region">
+                                    Country <PublicIcon />
+                                </div>
+                                <div main="mainPanel__stat">
+                                    <div>Total Cases: 1.27k</div>
+                                    <div>Infected Population: 1.28%</div>
+                                    <div>Recovery Rate: 96.60%</div>
+                                    <div>Mortality Rate: 3.32%</div>
+                                </div>
+                                <PieGraph />
                             </div>
                         </CardContent>
                     </Card>
+                    
                     <Card className="card">
                         <CardContent>
-                            <div className="detail">
-                                <LineGraph casesType={casesType} />
+                            <div className="mainPanel__detail">
+                                <div className="mainPanel__region">
+                                    Active Cases <PersonIcon />
+                                </div>
+                                <div main="mainPanel__stat">
+                                    <p>+442,678</p>
+                                    <p>11.72m total</p>
+                                </div>
+                                <div className="detail">
+                                    <LineGraph casesType={casesType} />
+                                </div>
                             </div>
                         </CardContent>
                     </Card>
@@ -109,21 +136,40 @@ function MainPanel() {
 
                     <Card className="mainPanel__bottomLeft card">
                         <CardContent>
-                            <div className="detail">
-                                <LineGraph casesType={casesType} />
+                            <div className="mainPanel__detail">
+                                <div className="mainPanel__region">
+                                    Recovered <EmojiEmotionsIcon />
+                                </div>
+                                <div main="mainPanel__stat">
+                                    <p>+357.052</p>
+                                    <p>170.07m total</p>
+                                </div>
+                                <div className="detail">
+                                    <LineGraph casesType={casesType} />
+                                </div>
                             </div>
                         </CardContent>
                     </Card>
                     <Card className="card">
                         <CardContent>
-                            <div className="detail">
-                                <LineGraph casesType={casesType} />
+                            <div className="mainPanel__detail">
+                                <div className="mainPanel__region">
+                                    Deaths <MoodBadIcon />
+                                </div>
+                                <div main="mainPanel__stat">
+                                    <p>+8,030</p>
+                                    <p>4.02m total</p>
+                                </div>
+                                <div className="detail">
+                                    <LineGraph casesType={casesType} />
+                                </div>
                             </div>
                         </CardContent>
                     </Card>
                 </div>
 
             </div>
+
         </div>
     )
 }

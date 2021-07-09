@@ -81,15 +81,21 @@ const App = () => {
 
   return (
     <div className="app">
-      <div className="app__top">
-        <div className="app_topLeft">
-          <MainPanel />
+      <div className="app__c19">
+        <div className="app__top">
+          <div className="app__topLeft">
+            <MainPanel className="app__main" />
+          </div>
+          <div className="app__topRight">
+            <CountryList />
+          </div>
+
         </div>
-        <div className="app__topRight">
-          <CountryList />
-        </div>
+
       </div>
 
+
+      {/*
       <div className="app__mid">
         <News />
       </div>
@@ -100,7 +106,7 @@ const App = () => {
 
       <div className="app__footer">
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };

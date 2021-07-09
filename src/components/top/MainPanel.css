@@ -1,31 +1,28 @@
 .mainPanel {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  border-right: 1 solid red;
 }
 
 .mainPanel__top {
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-.mainPanel__logo {
-  height: 80px;
-  margin-left: -30px;
+.mainPanel__top > img {
+  height: 10vh;
   object-fit: contain;
   cursor: pointer;
-  margin-right: 340px;
+  flex: 0.3;
 }
 
 .mainPanel__search {
-  height: 30px;
+  height: 5vh;
   display: flex;
   align-items: center;
-  flex: 0.7;
+  flex: 0.2;
   background-color: whitesmoke;
   padding: 10px;
   border-radius: 5px;
@@ -38,7 +35,8 @@
 
 .mainPanel__search > input {
   border: none;
-  width: auto;
+  width: 150px;
+  min-width: 150px;
   padding: 10px;
   outline-width: 0;
   font-size: medium;
@@ -46,8 +44,10 @@
 }
 
 .mainPanel__mid {
-  height: 300px;
-  width: 750px;
+  display: flex;
+  flex: 1;
+  height: 30px;
+  width: 50px;
   border-radius: 1px red solid;
 }
 
@@ -75,4 +75,33 @@
 }
 .card {
   width: 350px;
+}
+
+.mainPanel__detail {
+  text-align: left;
+  height: auto;
+}
+
+.mainPanel__region {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(222, 136, 44);
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.mainPanel__region > .MuiSvgIcon-root {
+  color: rgb(222, 136, 44) !important;
+  height: 35px !important;
+  width: 35px !important;
+}
+.mainPanel__stat {
+  margin-bottom: 100px !important;
+}
+.mainPanel__stat > div {
+  font-size: 16px;
+  color: #212529;
+  font-weight: 300;
 }
