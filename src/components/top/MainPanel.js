@@ -73,7 +73,7 @@ function MainPanel() {
 
     return (
         <div className="mainPanel">
-            <div className="mainPanel__top">
+            <div className="mainPanel__header">
                 <img
                     src={imgUrl}
                     alt="C19 logo"
@@ -114,7 +114,7 @@ function MainPanel() {
                             </div>
                         </CardContent>
                     </Card>
-                    
+
                     <Card className="card">
                         <CardContent>
                             <div className="mainPanel__detail">

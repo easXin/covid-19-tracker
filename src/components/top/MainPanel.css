@@ -2,16 +2,17 @@
   display: flex;
   flex-direction: column;
   border-right: 1 solid red;
+  
 }
 
-.mainPanel__top {
+.mainPanel__header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-.mainPanel__top > img {
+.mainPanel__header > img {
   height: 10vh;
   object-fit: contain;
   cursor: pointer;
@@ -42,6 +43,24 @@
   font-size: medium;
   background-color: transparent;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .mainPanel__mid {
   display: flex;

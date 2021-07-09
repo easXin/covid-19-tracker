@@ -1,8 +1,29 @@
+@media (max-width: 768px) {
+  .countryList {
+    padding-top: 20px;
+    height: 50vh !important;
+    margin-bottom: 40px !important;
+  }
+}
 .countryList {
-  position: absolute;
-  top: 0;
-  padding-top: 10px !important;
+  padding-top: 20px;
+  height: 1080px;
   display: flex;
-  height: 100vh;
-  width: inherit;
+  flex-direction: column;
+}
+/* table {
+  width: 400px;
+} */
+/* .countryList > img {
+  height: 100px;
+  width: 600px;
+} */
+
+.countryList__ad {
+  display: flex;
+  justify-content: center;
+}
+.countryList__ad > img {
+  height: 100px;
+  width: 600px;
 }

@@ -81,8 +81,41 @@ const App = () => {
 
   return (
     <div className="app">
-      <div className="app__c19">
+      <div className="app__header">
+        <div className="app__headerLeft">
+          <MainPanel className="app__main" />
+        </div>
+        <div className="app__headerRight">
+          <CountryList />
+        </div>
+      </div>
+      <div className="app__body">
+        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+      </div>
+
+
+
+
+
+
+      {/* <div className="app__body">
+
+      </div>
+      <div className="app__footer">
+
+      </div> */}
+      {/* <div className="app__c19">
         <div className="app__top">
+         
           <div className="app__topLeft">
             <MainPanel className="app__main" />
           </div>
@@ -92,7 +125,7 @@ const App = () => {
 
         </div>
 
-      </div>
+      </div> */}
 
 
       {/*
