@@ -25,5 +25,8 @@
 }
 .countryList__ad > img {
   height: 100px;
-  width: 600px;
+  width: 500px;
+}
+table {
+  margin-left: 10px;
 }
