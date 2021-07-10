@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+// connect the component to redux
+// mapStateToProps
+// create the store
+// crate a reducer 
+// provide the store to the app
+
 ReactDOM.render(
   <App />,
   document.getElementById('root')

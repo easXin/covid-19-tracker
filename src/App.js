@@ -19,6 +19,39 @@ import News from './components/mid/News'
 import Symptoms from './components/bottom/Symptoms'
 import Footer from './components/footer/Footer'
 
+// import { Provider } from 'react-redux';
+// import store from './redux/dataStore'
+import { useDispatch, useSelector } from 'react-redux';
+
+import Counter from './Counter.js';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux'
+
+
+
+
+const initState = {
+  count: 42
+}
+
+function reducer(state = initState, action) {
+  switch (action.type) {
+    case "INCREMENT":
+      return {
+        ...state,
+        count: state.count + 1
+      }
+    case "DECREMENT":
+      return {
+        ...state,
+        count: state.count - 1
+      }
+    default:
+      return state
+  }
+}
+const store = createStore(reducer)
+
 
 const App = () => {
   const [country, setInputCountry] = useState("worldwide");
@@ -32,7 +65,6 @@ const App = () => {
   const diseaseShApi = "https://disease.sh/v3/covid-19/"
 
   // ------------------------------------------  v2 
-
   useEffect(() => {
     fetch(`${diseaseShApi}all`)
       .then((response) => response.json())
@@ -59,88 +91,34 @@ const App = () => {
     // complete api call
     getCountriesData();
   }, []);
-  //  []  : runs one time   [xxx] : runs based on the condition 
 
-  const handleCountryChange = async (e) => {
-    const countryCode = e.target.value;
-    // pull out information for selected country, then render data 
-    // on the table 
-    const url =
-      countryCode === "worldwide"
-        ? `${diseaseShApi}all`
-        : `${diseaseShApi}countries/${countryCode}`;
-    await fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setInputCountry(countryCode);
-        setCountryInfo(data);
-        setMapCenter([data.countryInfo.lat, data.countryInfo.long])
-        setMapZoom(4)
-      });
-  };
+
+
 
   return (
-    <div className="app">
-      <div className="app__header">
-        <div className="app__headerLeft">
-          <MainPanel className="app__main" />
-        </div>
-        <div className="app__headerRight">
-          <CountryList />
-        </div>
-      </div>
-      <div className="app__body">
-        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-        <p>sadasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-      </div>
+    <Provider store={store}>
 
-
-
-
-
-
-      {/* <div className="app__body">
-
-      </div>
-      <div className="app__footer">
-
-      </div> */}
-      {/* <div className="app__c19">
-        <div className="app__top">
-         
-          <div className="app__topLeft">
-            <MainPanel className="app__main" />
+      <div className="app">
+        <div className="app__header">
+          <div className="app__headerLeft">
+            <Counter />
+            {/* <MainPanel className="app__main" /> */}
           </div>
-          <div className="app__topRight">
-            <CountryList />
+          <div className="app__headerRight">
+            {/* <CountryList /> */}
           </div>
-
         </div>
-
-      </div> */}
-
-
-      {/*
-      <div className="app__mid">
-        <News />
+        <div className="app__body">
+          <div className="app__news"></div>
+          <div className="app__symptoms"></div>
+        </div>
+        <div className="app__footer">
+          <div className="app__icons"></div>
+          <div className="app__copyRights"></div>
+        </div>
       </div>
+    </Provider>
 
-      <div className="app__bottom">
-        <Symptoms />
-      </div>
-
-      <div className="app__footer">
-        <Footer />
-      </div> */}
-    </div>
   );
 };
 

@@ -13,7 +13,7 @@ import PieGraph from '../PieGraph.js';
 import PersonIcon from '@material-ui/icons/Person';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import MoodBadIcon from '@material-ui/icons/MoodBad';
-
+//import { useDispatch, useSelector } from 'react-redux';
 
 function MainPanel() {
     const imgUrl = "https://www.holbrooklife.com/wp-content/uploads/2020/03/covid-2.jpg"
@@ -30,6 +30,21 @@ function MainPanel() {
     const [mapZoom, setMapZoom] = useState(3);
     const [mapCountries, setMapCountries] = useState([])
 
+
+    // const dispatch = useDispatch()
+    // useEffect(() => {
+    //     fetch(`${diseaseShApi}countries`)
+    //         .then((response) =>
+    //             dispatch({
+    //                 type: 'SET_EPIDEMIC_LIST',
+    //                 epidemicSitu: response
+    //             })
+    //         )
+
+    // }, []);
+    // const data = useSelector(state => state.epidemicList)
+
+    // useS
     useEffect(() => {
         fetch(`${diseaseShApi}all`)
             .then((response) => response.json())
@@ -54,6 +69,8 @@ function MainPanel() {
         };
         getCountriesData();
     }, []);
+
+    //   const user = useSelector(selectUser);
 
     const handleCountryChange = async (e) => {
         const countryCode = e.target.value;
