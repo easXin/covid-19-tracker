@@ -1,34 +1,50 @@
-table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+.table {
+  overflow: scroll;
+  height: 900px !important;
+  color: #6a5d5d;
+  text-align: left;
+  table-layout: fixed;
+}
+.table::-webkit-scrollbar {
+  display: none;
 }
 
-table td,
-table th {
-  border: 1px solid #ddd;
-  padding: 8px;
+.table td,
+th {
+  padding: 0.5rem;
+  vertical-align: middle !important;
+  text-align: center;
 }
-
-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-table tr:hover {
-  background-color: #ddd;
+.table tr:nth-of-type(odd) {
+  background-color: red !important;
 }
 
 th {
-  width: 20px !important;
-}
-table th,
-tfoot td {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: #04aa6d;
-  color: white;
+  text-align: center !important;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+  background-color: white;
 }
 
-.MuiSvgIcon-root {
+.table__bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px solid whitesmoke;
+  padding: 5px;
+  background-color: rgba(192, 186, 186, 0.548);
+  margin-right: 3px;
+  color: black;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: rgb(187, 176, 176);
+  transition-timing-function: ease-in-out;
+  transition: 0.5s;
 }

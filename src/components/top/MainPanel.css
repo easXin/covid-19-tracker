@@ -19,31 +19,6 @@
   flex: 0.3;
 }
 
-.mainPanel__search {
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  flex: 0.2;
-  background-color: whitesmoke;
-  padding: 10px;
-  border-radius: 5px;
-  border-radius: 50px;
-}
-
-.mainPanel__search > .MuiSvgIcon-root {
-  color: gray;
-}
-
-.mainPanel__search > input {
-  border: none;
-  width: 150px;
-  min-width: 150px;
-  padding: 10px;
-  outline-width: 0;
-  font-size: medium;
-  background-color: transparent;
-}
-
 
 
 

@@ -13,8 +13,9 @@ import PieGraph from '../PieGraph.js';
 import PersonIcon from '@material-ui/icons/Person';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import MoodBadIcon from '@material-ui/icons/MoodBad';
-//import { useDispatch, useSelector } from 'react-redux';
 
+//import { useDispatch, useSelector } from 'react-redux';
+import Filter from './Filter.js'
 function MainPanel() {
     const imgUrl = "https://www.holbrooklife.com/wp-content/uploads/2020/03/covid-2.jpg"
     const diseaseShApi = "https://disease.sh/v3/covid-19/"
@@ -29,29 +30,15 @@ function MainPanel() {
     const [mapCenter, setMapCenter] = useState({ lat: 37.09024, lng: -95.712891 });
     const [mapZoom, setMapZoom] = useState(3);
     const [mapCountries, setMapCountries] = useState([])
-
-
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     fetch(`${diseaseShApi}countries`)
-    //         .then((response) =>
-    //             dispatch({
-    //                 type: 'SET_EPIDEMIC_LIST',
-    //                 epidemicSitu: response
-    //             })
-    //         )
-
-    // }, []);
-    // const data = useSelector(state => state.epidemicList)
-
     // useS
-    useEffect(() => {
-        fetch(`${diseaseShApi}all`)
-            .then((response) => response.json())
-            .then((data) => {
-                setCountryInfo(data);
-            });
-    }, []);
+    // useEffect( async() => {
+    //     fetch(`${diseaseShApi}all`)
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             setCountryInfo(data);
+    //         });
+    // }, []);
+
     useEffect(() => {
         const getCountriesData = async () => {
             fetch(`${diseaseShApi}countries`)
@@ -70,7 +57,6 @@ function MainPanel() {
         getCountriesData();
     }, []);
 
-    //   const user = useSelector(selectUser);
 
     const handleCountryChange = async (e) => {
         const countryCode = e.target.value;
@@ -95,12 +81,13 @@ function MainPanel() {
                     src={imgUrl}
                     alt="C19 logo"
                 />
-                <div className="mainPanel__search">
-                    <SearchIcon />
-                    <input type="text" placeholder="Search Table ... "
-                        className="mainPanel__searchInput" />
-                    <ArrowDropDownIcon className="mainPanel__inputArrow" />
-                </div>
+                {/* <div className="mainPanel__search"> */}
+                {/* <SearchIcon />
+                    <Filter className="mainPanel__searchInput" /> */}
+                {/* <input type="text" placeholder="Search Table ... "
+                        className="mainPanel__searchInput" /> */}
+                {/* <ArrowDropDownIcon className="mainPanel__inputArrow" /> */}
+                {/* </div> */}
             </div>
 
             <div className="mainPanel__mid">

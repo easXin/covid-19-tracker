@@ -36,13 +36,9 @@ function CountryList({ deathTotal }) {
 
     // console.log(tableData)
     return (
-
+        //  ? tableData : "Loading"
         <div className="countryList">
-            <Table countries={tableData ? tableData : "Loading"} />
-            {/* <div className="countryList__ad">
-                <img src={c19} alt="ad" />
-            </div> */}
-
+            <Table countries={tableData} />
         </div>
     )
 }

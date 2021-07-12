@@ -1,0 +1,29 @@
+.mainPanel__search {
+  height: 5px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+}
+
+.mainPanel__search > .MuiSvgIcon-root {
+  color: gray;
+  background-color: whitesmoke;
+  padding: 5.5px;
+  padding-left: 10px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.mainPanel__search > input {
+  border: none;
+  width: 250px;
+  min-width: 250px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  /* border-radius: 50px; */
+  padding: 10px;
+  outline-width: 0;
+  font-size: medium;
+  background-color: whitesmoke;
+}

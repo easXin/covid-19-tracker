@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react'
-import { useTable, useSortBy, usePagination } from 'react-table'
+import { useTable, useSortBy, usePagination, useFilters, useGlobalFilter } from 'react-table'
 import { COLUMNS } from './top/columns'
 import "./Table.css"
+import Filter from '../components/top/Filter'
 
 export const Table = ({ countries }) => {
     // console.log("-->", countries)
@@ -14,17 +15,19 @@ export const Table = ({ countries }) => {
         getTableProps, getTableBodyProps,
         headerGroups, page, prepareRow, nextPage, previousPage,
         canNextPage, canPreviousPage,
-        pageOptions, state,
+        pageOptions, state, setGlobalFilter,
         gotoPage, pageCount,
-        setPageSize
     } = useTable({
         columns,
-        data
-    }, useSortBy, usePagination)
-    const { pageIndex, pageSize } = state
+        data,
+        initialState: { pageSize: 29 }
+    }, useFilters, useGlobalFilter, useSortBy, usePagination)
 
+    const { pageIndex, pageSize } = state
+    const { globalFilter } = state
     return (
         <>
+            <Filter filter={globalFilter} setFilter={setGlobalFilter} />
             <table {...getTableProps()}>
                 <thead>
                     {
@@ -35,8 +38,9 @@ export const Table = ({ countries }) => {
                                         <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                                             {column.render('Header')}
                                             <span>
-                                                {column.isSorted ? (column.isSortedDesc ? " Y" : " X") : " D"}
+                                                {column.isSorted ? (column.isSortedDesc ? " ▼" : " ▲") : " D"}
                                             </span>
+
                                         </th>
                                     ))
                                 }
@@ -75,26 +79,23 @@ export const Table = ({ countries }) => {
                     {' '}
                 </span>
 
-
-                <select value={pageSize} onChange={e => setPageSize(Number(e.target.value))} className="hideMe">
-                    {
-                        [37].map(pageSize => (
-                            <option key={pageSize} value={pageSize}>
-                                Show {pageSize}
-                            </option>
-                        ))
-                    }
-                </select>
                 <br />
+                <div className="table__bottom">
+                    <div className="table__bottomLeft">
+                        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
+                        <button onClick={previousPage} disabled={!canPreviousPage}>
+                            Prev
+                        </button>
+                    </div>
+                    <div className="table__bottomRight">
+                        <button onClick={nextPage} disabled={!canNextPage}>
+                            Next
+                        </button>
+                        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</button>
+                    </div>
 
-                <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
-                <button onClick={previousPage} disabled={!canPreviousPage}>
-                    Prev
-                </button>
-                <button onClick={nextPage} disabled={!canNextPage}>
-                    Next
-                </button>
-                <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</button>
+
+                </div>
             </div>
         </>
     )
