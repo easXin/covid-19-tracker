@@ -12,9 +12,9 @@ export const COLUMNS = [
     },
     {
         Header: 'Death', accessor: 'deaths'
-    },
-    {
-        Header: 'Fatality', accessor: 'fatality'
     }
+    // {
+    //     Header: 'Fatality', accessor: 'fatality'
+    // }
 ]
 //

@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 function CountryList() {
 
     const [tableData, setTableData] = useState([]);
-    const [fatalityCases, setFatalityCases] = useState(0);
+    // const [fatalityCases, setFatalityCases] = useState(0);
     const diseaseShApi = "https://disease.sh/v3/covid-19/"
     const dispatch = useDispatch()
     // const epidemicList = useSelector(state => state.epidemicList)
@@ -16,15 +16,15 @@ function CountryList() {
 
     useEffect(() => {
         const getCountriesData = async () => {
-            fetch(`${diseaseShApi}all`)
-                .then((response) => response.json())
-                .then(worldwideData => {
-                    setFatalityCases(worldwideData['deaths'])
-                    dispatch({
-                        type: 'SET_TOTAL_CASES',
-                        totalCases: worldwideData
-                    })
-                })
+            // fetch(`${diseaseShApi}all`)
+            //     .then((response) => response.json())
+            //     .then(worldwideData => {
+            //         setFatalityCases(worldwideData['deaths'])
+            //         dispatch({
+            //             type: 'SET_TOTAL_CASES',
+            //             totalCases: worldwideData
+            //         })
+            //     })
             fetch(`${diseaseShApi}countries`)
                 .then((response) => response.json())
                 .then((epidemicList) => {
@@ -34,9 +34,10 @@ function CountryList() {
                         cases: data.cases,
                         recovered: data.recovered,
                         deaths: data.deaths,
-                        fatality: (data.deaths / fatalityCases) * 100
+                        fatality: 442
                     }));
-
+                    // console.log(">>>", countries)
+                    // (data.deaths / fatalityCases) * 100
                     dispatch({
                         type: 'SET_EPIDEMIC_LIST',
                         epidemicList: epidemicList
@@ -49,20 +50,20 @@ function CountryList() {
         getCountriesData();
 
 
-    }, [fatalityCases]);
+    }, []);
 
 
 
     return (
 
-        <div className="countryList">
-
+        <div div className="countryList" >
+            {/* {console.log(tableData)} */}
             <Table countries={tableData} />
-            <div className="countryList__ad">
+            {/* <div className="countryList__ad">
                 <img src={c19} alt="ad" />
-            </div>
+            </div> */}
 
-        </div>
+        </div >
     )
 }
 

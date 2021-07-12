@@ -3,12 +3,8 @@ import { useTable, useSortBy } from 'react-table'
 import { COLUMNS } from './top/columns'
 import "./Table.css"
 
-import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ImportExportIcon from '@material-ui/icons/ImportExport';
-
 function Table({ countries }) {
-
+    // console.log("?>>>", countries)
     const columns = useMemo(() => COLUMNS, [])
     const data = useMemo(() => countries, [])
 
@@ -49,6 +45,7 @@ function Table({ countries }) {
                                     row.cells.map(cell => {
                                         return <td {...cell.getCellProps()}>
                                             {
+                                                //console.log(">>", cell)
                                                 cell.render('Cell')
                                             }
                                         </td>
