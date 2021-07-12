@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Table from "../Table"
 import c19 from "./c19.jpg"
 import './CountryList.css'
@@ -32,12 +32,13 @@ function CountryList({ deathTotal }) {
                 });
         };
         getCountriesData();
-    }, [tableData]);
+    }, []);
 
+    // console.log(tableData)
     return (
-        <div className="countryList">
 
-            <Table countries={tableData} />
+        <div className="countryList">
+            <Table countries={tableData ? tableData : "Loading"} />
             {/* <div className="countryList__ad">
                 <img src={c19} alt="ad" />
             </div> */}
