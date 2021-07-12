@@ -13,9 +13,10 @@ import PieGraph from '../PieGraph.js';
 import PersonIcon from '@material-ui/icons/Person';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import MoodBadIcon from '@material-ui/icons/MoodBad';
-//import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function MainPanel() {
+    //const epidemicList = useSelector(state => state.epidemicList)
     const imgUrl = "https://www.holbrooklife.com/wp-content/uploads/2020/03/covid-2.jpg"
     const diseaseShApi = "https://disease.sh/v3/covid-19/"
     const [country, setInputCountry] = useState("worldwide");
@@ -29,22 +30,8 @@ function MainPanel() {
     const [mapCenter, setMapCenter] = useState({ lat: 37.09024, lng: -95.712891 });
     const [mapZoom, setMapZoom] = useState(3);
     const [mapCountries, setMapCountries] = useState([])
+    const epidemicList = useSelector(state => state.epidemicList)
 
-
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     fetch(`${diseaseShApi}countries`)
-    //         .then((response) =>
-    //             dispatch({
-    //                 type: 'SET_EPIDEMIC_LIST',
-    //                 epidemicSitu: response
-    //             })
-    //         )
-
-    // }, []);
-    // const data = useSelector(state => state.epidemicList)
-
-    // useS
     useEffect(() => {
         fetch(`${diseaseShApi}all`)
             .then((response) => response.json())
@@ -70,8 +57,6 @@ function MainPanel() {
         getCountriesData();
     }, []);
 
-    //   const user = useSelector(selectUser);
-
     const handleCountryChange = async (e) => {
         const countryCode = e.target.value;
         const url =
@@ -88,9 +73,13 @@ function MainPanel() {
             });
     };
 
+
+
+
     return (
-        <div className="mainPanel">
-            <div className="mainPanel__header">
+
+        < div className="mainPanel" >
+            < div className="mainPanel__header" >
                 <img
                     src={imgUrl}
                     alt="C19 logo"
@@ -101,7 +90,7 @@ function MainPanel() {
                         className="mainPanel__searchInput" />
                     <ArrowDropDownIcon className="mainPanel__inputArrow" />
                 </div>
-            </div>
+            </ div>
 
             <div className="mainPanel__mid">
                 <Map
@@ -187,7 +176,7 @@ function MainPanel() {
 
             </div>
 
-        </div>
+        </div >
     )
 }
 

@@ -19,11 +19,7 @@ import News from './components/mid/News'
 import Symptoms from './components/bottom/Symptoms'
 import Footer from './components/footer/Footer'
 
-// import { Provider } from 'react-redux';
-// import store from './redux/dataStore'
-import { useDispatch, useSelector } from 'react-redux';
 
-import Counter from './Counter.js';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 
@@ -31,20 +27,27 @@ import { createStore } from 'redux'
 
 
 const initState = {
-  count: 42
+  epidemicList: [],
+  selectedCountry: "",
+  totalCases: []
 }
 
 function reducer(state = initState, action) {
   switch (action.type) {
-    case "INCREMENT":
+    case 'SET_COUNTRY':
       return {
         ...state,
-        count: state.count + 1
+        selectedCountry: action.selectedCountry
       }
-    case "DECREMENT":
+    case 'SET_EPIDEMIC_LIST':
       return {
         ...state,
-        count: state.count - 1
+        epidemicList: action.epidemicList
+      }
+    case 'SET_TOTAL_CASES':
+      return {
+        ...state,
+        totalCases: action.totalCases
       }
     default:
       return state
@@ -65,13 +68,7 @@ const App = () => {
   const diseaseShApi = "https://disease.sh/v3/covid-19/"
 
   // ------------------------------------------  v2 
-  useEffect(() => {
-    fetch(`${diseaseShApi}all`)
-      .then((response) => response.json())
-      .then((data) => {
-        setCountryInfo(data);
-      });
-  }, []);
+
 
   useEffect(() => {
     const getCountriesData = async () => {
@@ -94,18 +91,16 @@ const App = () => {
 
 
 
-
   return (
     <Provider store={store}>
 
       <div className="app">
         <div className="app__header">
           <div className="app__headerLeft">
-            <Counter />
-            {/* <MainPanel className="app__main" /> */}
+            <MainPanel className="app__main" />
           </div>
           <div className="app__headerRight">
-            {/* <CountryList /> */}
+            <CountryList />
           </div>
         </div>
         <div className="app__body">

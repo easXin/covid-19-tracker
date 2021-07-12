@@ -1,21 +1,21 @@
-.table {
+table {
   overflow: scroll;
   height: inherit;
   color: #6a5d5d;
   text-align: left;
   table-layout: fixed;
 }
-.table::-webkit-scrollbar {
+table::-webkit-scrollbar {
   display: none;
 }
 
-.table td,
+table td,
 th {
   padding: 0.5rem;
   vertical-align: middle !important;
   text-align: center;
 }
-.table tr:nth-of-type(odd) {
+table tr:nth-of-type(odd) {
   background-color: #f3f2f8;
 }
 
