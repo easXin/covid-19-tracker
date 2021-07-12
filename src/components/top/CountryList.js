@@ -1,26 +1,34 @@
 import React, { useState, useEffect } from 'react'
-import { sortData, prettyPrintStat } from "../../utils/utils"
 import Table from "../Table"
 import c19 from "./c19.jpg"
 import './CountryList.css'
+import { useDispatch, useSelector } from 'react-redux';
 
-function CountryList() {
-
+function CountryList({ deathTotal }) {
+    console.log(deathTotal)
     const [tableData, setTableData] = useState([]);
     const diseaseShApi = "https://disease.sh/v3/covid-19/"
-    const coronavirusAd = "https://s3-prod.adage.com/s3fs-public/styles/width_1024/public/20200416_CDC_Ad_council_3x2.jpg"
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const getCountriesData = async () => {
             fetch(`${diseaseShApi}countries`)
                 .then((response) => response.json())
-                .then((data) => {
-                    const countries = data.map((country) => ({
-                        name: country.country,
-                        value: country.countryInfo.iso2,
+                .then((epidemicList) => {
+
+                    const countries = epidemicList.map((data) => ({
+                        country: data.country,
+                        cases: data.cases,
+                        recovered: data.recovered,
+                        deaths: data.deaths,
+                        fatality: (((data.deaths / data.cases) * 100).toFixed(2)).toString() + "%"
                     }));
-                    let sortedData = sortData(data);
-                    setTableData(sortedData);
+
+                    dispatch({
+                        type: 'SET_EPIDEMIC_LIST',
+                        epidemicList: epidemicList
+                    })
+                    setTableData(countries);
                 });
         };
         getCountriesData();

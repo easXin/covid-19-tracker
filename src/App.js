@@ -1,50 +1,38 @@
-import React, { useState, useEffect } from 'react'
-// import { Card, CardContent, MenuItem, Select, FormControl } from '@material-ui/core'
-// import uuid from 'react-uuid'
-
-// import Table from "./components/Table.js"
-// import InfoBox from "./components/InfoBox"
-// import Map from "./components/Map"
-// import LineGraph from "./components/LineGraph"
+import React, { useState, useEffect, useMemo } from 'react'
 import { sortData, prettyPrintStat } from "./utils/utils"
-// import numeral from "numeral";
-
 import './App.css';
 import "leaflet/dist/leaflet.css"
-
-// ------------------------------------------  v2 
 import MainPanel from './components/top/MainPanel'
 import CountryList from './components/top/CountryList'
-import News from './components/mid/News'
-import Symptoms from './components/bottom/Symptoms'
-import Footer from './components/footer/Footer'
 
-// import { Provider } from 'react-redux';
-// import store from './redux/dataStore'
 import { useDispatch, useSelector } from 'react-redux';
 
-import Counter from './Counter.js';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 
 
-
-
 const initState = {
-  count: 42
+  epidemicList: [],
+  selectedCountry: "",
+  totalCases: []
 }
 
 function reducer(state = initState, action) {
   switch (action.type) {
-    case "INCREMENT":
+    case 'SET_COUNTRY':
       return {
         ...state,
-        count: state.count + 1
+        selectedCountry: action.selectedCountry
       }
-    case "DECREMENT":
+    case 'SET_EPIDEMIC_LIST':
       return {
         ...state,
-        count: state.count - 1
+        epidemicList: action.epidemicList
+      }
+    case 'SET_TOTAL_CASES':
+      return {
+        ...state,
+        totalCases: action.totalCases
       }
     default:
       return state
@@ -64,6 +52,8 @@ const App = () => {
   const [mapCountries, setMapCountries] = useState([])
   const diseaseShApi = "https://disease.sh/v3/covid-19/"
 
+  const [flag, setFlag] = useState(true)
+  //const dispatch = useDispatch()
   // ------------------------------------------  v2 
   useEffect(() => {
     fetch(`${diseaseShApi}all`)
@@ -71,7 +61,9 @@ const App = () => {
       .then((data) => {
         setCountryInfo(data);
       });
-  }, []);
+  }, [flag]);
+
+
 
   useEffect(() => {
     const getCountriesData = async () => {
@@ -92,20 +84,15 @@ const App = () => {
     getCountriesData();
   }, []);
 
-
-
-
   return (
     <Provider store={store}>
-
       <div className="app">
         <div className="app__header">
           <div className="app__headerLeft">
-            <Counter />
-            {/* <MainPanel className="app__main" /> */}
+            <MainPanel className="app__main" />
           </div>
           <div className="app__headerRight">
-            {/* <CountryList /> */}
+            <CountryList deathTotal={countryInfo['deaths']}/>
           </div>
         </div>
         <div className="app__body">
