@@ -8,7 +8,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ImportExportIcon from '@material-ui/icons/ImportExport';
 
 function Table({ countries }) {
-    console.log(countries)
+
     const columns = useMemo(() => COLUMNS, [])
     const data = useMemo(() => countries, [])
 
@@ -31,9 +31,6 @@ function Table({ countries }) {
                                 headerGroup.headers.map(column => (
                                     <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                                         {column.render('Header')}
-                                        <span>
-                                            {column.isSorted ? (column.isSortedDesc ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />) : <ArrowDropUpIcon />}
-                                        </span>
                                     </th>
                                 ))
                             }

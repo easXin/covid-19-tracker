@@ -1,4 +1,5 @@
 
+
 export const COLUMNS = [
     {
         Header: 'Country', accessor: 'country'
@@ -16,3 +17,4 @@ export const COLUMNS = [
         Header: 'Fatality', accessor: 'fatality'
     }
 ]
+//
