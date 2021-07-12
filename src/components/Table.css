@@ -1,6 +1,6 @@
 .table {
   overflow: scroll;
-  height: inherit;
+  height: 900px !important;
   color: #6a5d5d;
   text-align: left;
   table-layout: fixed;

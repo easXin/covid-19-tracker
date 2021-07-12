@@ -1,33 +1,64 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import { useTable, useSortBy } from 'react-table'
+import { COLUMNS } from './top/columns'
 import "./Table.css"
-import uuid from "react-uuid"
-import { useDispatch, useSelector } from 'react-redux';
-function Table({ countries }) {
+
+export const Table = ({ countries }) => {
+    const columns = useMemo(() => COLUMNS, [])
+    const data = useMemo(() => countries, [])
+
+    const tableInstance = useTable({
+        columns: columns,
+        data: data
+    })
+
+    const {
+        getTableProps, getTableBodyProps,
+        headerGroups, rows, prepareRow,
+    } = tableInstance
+
     return (
-        <div className="table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Country</th>
-                        <th>Cases</th>
-                        <th>Recovered</th>
-                        <th>Death</th>
-                        <th>Fatality</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {countries.map(({ country, cases, recovered, deaths, fatality }) => (
-                        <tr key={uuid()}>
-                            <td>{country}</td>
-                            <td>{cases}</td>
-                            <td>{recovered}</td>
-                            <td>{deaths}</td>
-                            <td>{fatality}</td>
+        <table {...getTableProps()}>
+            <thead>
+                {
+                    headerGroups.map(headerGroup => (
+                        <tr {...headerGroup.getHeaderGroupProps()}>
+                            {
+                                headerGroup.headers.map(column => (
+                                    <th {...column.getHeaderProps()}>
+                                        {column.render('Header')}
+
+                                    </th>
+                                ))
+                            }
                         </tr>
                     ))}
-                </tbody>
-            </table>
-        </div>
+            </thead>
+
+            <tbody {...getTableBodyProps()}>
+                {
+                    rows.map(row => {
+                        prepareRow(row)
+                        return (
+                            <tr {...row.getRowProps()}>
+                                {
+                                    row.cells.map(cell => {
+                                        return <td {...cell.getCellProps()}>
+                                            {
+                                                cell.render('Cell')
+                                            }
+                                        </td>
+                                    })
+                                }
+                            </tr>
+                        )
+                    })
+                }
+            </tbody>
+
+
+        </table>
+
     )
 }
 

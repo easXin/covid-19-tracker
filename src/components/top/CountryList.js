@@ -5,7 +5,7 @@ import './CountryList.css'
 import { useDispatch, useSelector } from 'react-redux';
 
 function CountryList({ deathTotal }) {
-    console.log(deathTotal)
+    // console.log(deathTotal)
     const [tableData, setTableData] = useState([]);
     const diseaseShApi = "https://disease.sh/v3/covid-19/"
     const dispatch = useDispatch()
@@ -32,14 +32,15 @@ function CountryList({ deathTotal }) {
                 });
         };
         getCountriesData();
-    }, []);
+    }, [tableData]);
+
     return (
         <div className="countryList">
 
             <Table countries={tableData} />
-            <div className="countryList__ad">
+            {/* <div className="countryList__ad">
                 <img src={c19} alt="ad" />
-            </div>
+            </div> */}
 
         </div>
     )
