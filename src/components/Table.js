@@ -7,9 +7,9 @@ import Filter from '../components/top/Filter'
 export const Table = ({ countries }) => {
     // console.log("-->", countries)
     const columns = useMemo(() => COLUMNS, [])
-    console.log("+++", countries)
+    //console.log("+++", countries)
 
-    const data = useMemo(() => countries, [])
+    const data = useMemo(() => countries, [countries])
 
     const {
         getTableProps, getTableBodyProps,
@@ -69,7 +69,7 @@ export const Table = ({ countries }) => {
                     }
                 </tbody>
             </table>
-
+            <br />
             <div>
                 <span>
                     Page{' '}
