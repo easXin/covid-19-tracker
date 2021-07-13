@@ -1,5 +1,3 @@
-
-
 export const COLUMNS = [
     {
         Header: 'Country', accessor: 'country'
@@ -12,9 +10,8 @@ export const COLUMNS = [
     },
     {
         Header: 'Death', accessor: 'deaths'
+    },
+    {
+        Header: 'Fatality', accessor: 'fatality'
     }
-    // {
-    //     Header: 'Fatality', accessor: 'fatality'
-    // }
 ]
-//

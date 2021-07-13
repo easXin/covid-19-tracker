@@ -1,29 +1,14 @@
-import React, { useState, useEffect } from 'react'
-// import { Card, CardContent, MenuItem, Select, FormControl } from '@material-ui/core'
-// import uuid from 'react-uuid'
-
-// import Table from "./components/Table.js"
-// import InfoBox from "./components/InfoBox"
-// import Map from "./components/Map"
-// import LineGraph from "./components/LineGraph"
+import React, { useState, useEffect, useMemo } from 'react'
 import { sortData, prettyPrintStat } from "./utils/utils"
-// import numeral from "numeral";
-
 import './App.css';
 import "leaflet/dist/leaflet.css"
-
-// ------------------------------------------  v2 
 import MainPanel from './components/top/MainPanel'
 import CountryList from './components/top/CountryList'
-import News from './components/mid/News'
-import Symptoms from './components/bottom/Symptoms'
-import Footer from './components/footer/Footer'
 
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
-
-
 
 
 const initState = {
@@ -67,7 +52,17 @@ const App = () => {
   const [mapCountries, setMapCountries] = useState([])
   const diseaseShApi = "https://disease.sh/v3/covid-19/"
 
+  const [flag, setFlag] = useState(true)
+  //const dispatch = useDispatch()
   // ------------------------------------------  v2 
+  useEffect(() => {
+    fetch(`${diseaseShApi}all`)
+      .then((response) => response.json())
+      .then((data) => {
+        setCountryInfo(data);
+      });
+  }, [flag]);
+
 
 
   useEffect(() => {
@@ -89,22 +84,21 @@ const App = () => {
     getCountriesData();
   }, []);
 
-
-
   return (
     <Provider store={store}>
-
       <div className="app">
         <div className="app__header">
           <div className="app__headerLeft">
             <MainPanel className="app__main" />
           </div>
           <div className="app__headerRight">
-            <CountryList />
+            <CountryList deathTotal={countryInfo['deaths']} />
           </div>
         </div>
         <div className="app__body">
-          <div className="app__news"></div>
+          <div className="app__news">
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+          </div>
           <div className="app__symptoms"></div>
         </div>
         <div className="app__footer">

@@ -1,6 +1,6 @@
 table {
   overflow: scroll;
-  height: inherit;
+  height: auto !important;
   color: #6a5d5d;
   text-align: left;
   table-layout: fixed;
@@ -15,8 +15,8 @@ th {
   vertical-align: middle !important;
   text-align: center;
 }
-table tr:nth-of-type(odd) {
-  background-color: #f3f2f8;
+.table tr:nth-of-type(odd) {
+  background-color: red !important;
 }
 
 th {
@@ -25,4 +25,26 @@ th {
   top: 0;
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
   background-color: white;
+}
+
+.table__bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px solid whitesmoke;
+  padding: 5px;
+  background-color: rgba(192, 186, 186, 0.548);
+  margin-right: 3px;
+  color: black;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: rgb(187, 176, 176);
+  transition-timing-function: ease-in-out;
+  transition: 0.5s;
 }

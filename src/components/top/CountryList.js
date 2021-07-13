@@ -1,30 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { sortData, prettyPrintStat } from "../../utils/utils"
+import React, { useState, useEffect, useMemo } from 'react'
 import Table from "../Table"
 import c19 from "./c19.jpg"
 import './CountryList.css'
 import { useDispatch, useSelector } from 'react-redux';
 
-function CountryList() {
-
+function CountryList({ deathTotal }) {
+    // console.log(deathTotal)
     const [tableData, setTableData] = useState([]);
     // const [fatalityCases, setFatalityCases] = useState(0);
     const diseaseShApi = "https://disease.sh/v3/covid-19/"
     const dispatch = useDispatch()
-    // const epidemicList = useSelector(state => state.epidemicList)
-    const covidTotal = useSelector(state => state.covidTotal)
 
     useEffect(() => {
         const getCountriesData = async () => {
-            // fetch(`${diseaseShApi}all`)
-            //     .then((response) => response.json())
-            //     .then(worldwideData => {
-            //         setFatalityCases(worldwideData['deaths'])
-            //         dispatch({
-            //             type: 'SET_TOTAL_CASES',
-            //             totalCases: worldwideData
-            //         })
-            //     })
+
             fetch(`${diseaseShApi}countries`)
                 .then((response) => response.json())
                 .then((epidemicList) => {
@@ -34,15 +23,13 @@ function CountryList() {
                         cases: data.cases,
                         recovered: data.recovered,
                         deaths: data.deaths,
-                        fatality: 442
+                        fatality: (((data.deaths / data.cases) * 100).toFixed(2)).toString() + "%"
                     }));
-                    // console.log(">>>", countries)
-                    // (data.deaths / fatalityCases) * 100
+
                     dispatch({
                         type: 'SET_EPIDEMIC_LIST',
                         epidemicList: epidemicList
                     })
-                    // let sortedData = sortData(epidemicList);
                     setTableData(countries);
                 });
 
@@ -52,18 +39,12 @@ function CountryList() {
 
     }, []);
 
-
-
+    // console.log(tableData)
     return (
-
-        <div div className="countryList" >
-            {/* {console.log(tableData)} */}
+        //  ? tableData : "Loading"
+        <div className="countryList">
             <Table countries={tableData} />
-            {/* <div className="countryList__ad">
-                <img src={c19} alt="ad" />
-            </div> */}
-
-        </div >
+        </div>
     )
 }
 
