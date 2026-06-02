@@ -30,15 +30,6 @@ This project was created as an early React practice project to strengthen fronte
 - Country dropdown menu for selecting and viewing country-specific statistics
 - Firebase cloud deployment for public hosting
 
-## What I Practiced
-
-- Building React applications with Hooks
-- Fetching and rendering real-time API data
-- Creating data visualizations with react-chartjs-2
-- Building map-based UI features with react-leaflet
-- Using Material UI components for layout and styling
-- Deploying a React application to Firebase Hosting
-
 ## Project Status
 
 This is an archived early personal project. It is kept as part of my project history to show my early frontend development practice with API integration, data visualization, interactive UI components, and cloud deployment.
